@@ -29,11 +29,9 @@ NOMEN=${REM_1:$EQU2:$NOM_LENGTH}
 # Extracting the cognomen
 REM_2=${REM_1:$COMMA2}
 EQU3=$(expr index $REM_2 '=')
-COGNOMEN=${name1:$EQU2}
+COGNOMEN=${REM_2:$EQU3}
 
-
-
-
+# Print out Cicero's full name
 echo "Cicero's full Latin name was: $PRAENOMEN $NOMEN $COGNOMEN."
 
 
