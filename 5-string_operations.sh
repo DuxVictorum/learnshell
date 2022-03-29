@@ -6,6 +6,7 @@ echo Our motto has ${#motto} characters.
 expr index "$motto" "h"		# 4; with 'expr' the count starts at 1 (not 0)
 expr length "$motto"
 
+
 # Practicing string extraction
 name1="praenomen=Marcus,nomen=Tullius,cognomen=Cicero"
 
@@ -35,3 +36,9 @@ COGNOMEN=${REM_2:$EQU3}
 echo "Cicero's full Latin name was: $PRAENOMEN $NOMEN $COGNOMEN."
 
 
+# Practice with substring replacement
+line="Bella per Emathios plus quam civilia campos plus quam"
+echo ${line/quam/fiesta}	#replace first occurrence
+echo ${line//quam/libana}	#replace all occurrences
+echo ${line//quam/}			#replace all occurrences and replace with empty string
+echo ${line[@]/%quam/porcum}	#replace only the 'quam' at the end
