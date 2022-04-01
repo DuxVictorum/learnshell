@@ -2,7 +2,8 @@
 # Practicing conditions and comparison operators at learnshell.org
 
 num=$1
-name=$2
+echo "What's your name?"
+read name
 
 # check that both arguments are passed
 if [ -e $num ] || [ -e $name ]; then
