@@ -1,6 +1,7 @@
 # Practice with Case structure conditionals
 
-poet=$1
+echo -en "You can have lunch with your favorite Greek or Roman epic poet. \nWhom do you pick?\t"
+read poet
 
 case $poet in
 	"Homer") echo "Homer, huh? Back to the beginning, good.";;
