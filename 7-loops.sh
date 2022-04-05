@@ -32,3 +32,13 @@ while [ $num_poets -gt 0 ]; do
 	fi
 	num_poets=$(($num_poets - 1))
 done
+
+# Until statement waiting for user to enter '5'
+right_num=5
+echo "Enter a number between 1 and 10. "
+read user_num
+until [ $user_num -eq $right_num ] ; do
+	echo "That's a great number, but not the right one."
+	echo -n "Enter another number:  "
+	read user_num
+done
