@@ -42,3 +42,18 @@ until [ $user_num -eq $right_num ] ; do
 	echo -n "Enter another number:  "
 	read user_num
 done
+
+# While statement with break and continue
+end_num=24
+current_num=0
+while [ $current_num -le $end_num ]; do
+	current_num=$((current_num + 1))
+	if [ $((current_num % 3)) = 0 ]; then
+		continue
+	fi
+	echo "The current number is $current_num."
+	if [ $current_num -eq 22 ]; then
+		echo "We're stopping right here at 22!"
+		break
+	fi
+done
