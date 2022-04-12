@@ -19,9 +19,13 @@ echo "The square of $num is $(squareNum)."
 # Exercise 2 - Function to translate sentences to arithmatic expressions
 
 function ENGLISH_CALC {
-	num1=
+	num1=$1
+	num2=$3
 	case $2 in 
-		"plus") echo "$1 + $3 = $(())"
+		"plus") echo "$num1 + $num2 = $((num1 + num2))";;
+		"minus") echo "$num1 - $num2 = $((num1 - num2))";;
+		"times") echo "$num1 * $num2 = $((num1 * num2))";;
+	esac
 }
 
 # testing code
