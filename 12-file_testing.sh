@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
-if [ -e $1 ]; then
-	echo "Yes, that file exists."
+if [ -f $1 ]; then
+	echo "Yes, that file exists and it's a regular file."
 else
-	echo "Sorry, that file does not exist."
+	echo "Sorry, that file does not exist or it's not a regular file."
 fi
 
 if [ -d "/home/mthorne/learnshell/testdir/" ]; then
