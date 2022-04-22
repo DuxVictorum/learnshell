@@ -21,9 +21,9 @@ elif [[ $1 =~ ^[0-9]+$ ]] ; then
 else
 	proc_array=(`ps -eF | grep $1 | awk '{print $2}'`)
 	echo ${proc_array[@]}
-	for ps_num in $proc_array[@] ; do
+	for ps_num in ${proc_array[@]} ; do
 		ps_name=$(cat /proc/$ps_num/status | grep Name | awk '{print $2}')
-		if [ $ps_name == *"$1"* ] ; then
+		if [[ $ps_name == *"$1"* ]] ; then
 			proc_num=$ps_num
 			proc_name=$ps_name
 			break
