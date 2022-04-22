@@ -19,4 +19,5 @@ while [ $num -lt 15 ]; do
 	echo "Time to sleep...$num seconds."
 	sleep 5
 	num=$((num + 5))
+	echo "Number is currently $num."
 done
