@@ -2,12 +2,15 @@
 
 # Practice with getopts (following the model of 13-parameter_parsing.sh
 
-while getopts h:p:o? flag ; do
+while getopts :i:p:oh flag ; do
+	echo $flag
 	case $flag in 
-		h) historian=$OPTARG;;
+		i) historian=$OPTARG;;
 		p) poet=$OPTARG;;
 		o) echo "Orators are good at everything! But we don't need one today...";;
-		?) echo "You want help, sure, everyone does! But it will cost you. How much you got?";;
+		h) echo "You want help, sure, everyone does! But it will cost you. How much you got?";;
+		:) echo "You silly, did you forget something? The $flag option requires an additional argument.";;
+		?) echo -e "What kind of command flag is that? Use this syntax: \n\t$(basename $0) [-i -p -o -h]";;
 	esac
 done
 
