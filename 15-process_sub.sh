@@ -2,13 +2,26 @@
 
 # Practice with process substitution
 
-files=()
+# Create ~/foof directory if it doesn't exist, then count current number of .txt files
 if [ -d ~/foof ] ; then
 	cd ~/foof
-	num_files=$(ls file?.txt | wc -l)
-	echo "This directory has $num_files for use. Oh boy!"
+	num_files=$(ls *.txt | wc -l)
+	echo "This directory has $num_files .txt files for use. Oh boy!"
 
-	for f in file?.txt ; do
+	# Create .txt files if number is less than 4
+	n=1
+	while [ $n -le 4 ] ; do
+		if [ -f file$n.txt ] ; then
+			continue
+		else
+			touch file$n.txt
+		fi
+		n=$((n + 1))
+		echo $n
+	done
+
+	# Add a new line of text to each .txt file
+	for f in *.txt ; do
 		echo -n "Scanning file ..."
 		if [ -s $f ] ; then
 			echo "File $f already has contents."
