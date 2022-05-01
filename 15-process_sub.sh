@@ -9,7 +9,7 @@ if [ ! -d ~/foof ] ; then
 else
 	cd ~/foof
 	# Count current number of .txt files in the directory
-	if [ -f *.txt ] ; then
+	if [ -e file1.txt ] ; then
 		num_files=$(ls *.txt | wc -l)
 		echo "This directory has $num_files files for use. Oh boy!"
 	else 
@@ -36,8 +36,27 @@ else
 		echo -e "\tAdding new contents..."
 		sleep 1
 		num_lines=$(cat $f | wc -l)
-		echo "Now this file has $((num_lines + 1)) lines of text." >> $f
+		if [ $f = "file3.txt" ] ; then
+			echo "So this is file3.txt, huh? Already on line $((num_lines + 1)). Alrighy then..." >> $f
+		else
+			echo "Now this file has $((num_lines + 1)) lines of text." >> $f
+		fi
 	done
 
 fi
 
+# Create subdirectory for diff testing purposes.
+if [ ! -d ~/foof/testdir ] ; then
+	mkdir ~/foof/testdir
+	echo "Directory ~/foof/testdir created."
+else
+	cd ~/foof/testdir
+	touch test{1..2}.txt
+	for f in *.txt ; do
+		echo "Just some test data, ya know..." >> $f
+	done
+fi
+
+# Run diff command through process substitution (woo-hoo!)
+echo "Comparing directories..."
+diff <(ls ~/foof) <(ls ~/foof/testdir)
