@@ -13,4 +13,4 @@ this is the Real Thing!" | grep -i thin
 grep 'x[0-9]\{4\}' $gp
 grep '^[0-9]\{3\} ' $gp
 grep ' 2013$' $gp
-
+grep '[aeiou].[aeiou]' $gp
