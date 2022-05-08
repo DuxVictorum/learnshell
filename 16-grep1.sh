@@ -2,7 +2,7 @@
 
 # Grep practice
 gp=grep_practice.txt
-GREP_OPTIONS='--color=auto'
+export GREP_OPTIONS='--color=auto'
 
 # 0 - a quick test of the emergency grep-cast system!
 
@@ -35,4 +35,4 @@ echo -e "\n#8) All lines that do NOT contain Sep."
 grep -v Sep. $gp
 
 echo -e "\n#9) All lines that contain 'de' as a separate word"
-grep --color=auto -w de $gp
+grep -w de $gp
