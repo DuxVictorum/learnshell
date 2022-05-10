@@ -1,8 +1,7 @@
-#!/usr/bin/bash
+#!/usr/bin/bash -i
 
 # Grep practice
 gp=grep_practice.txt
-export GREP_OPTIONS='--color=auto'
 
 # 0 - a quick test of the emergency grep-cast system!
 
