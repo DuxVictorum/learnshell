@@ -3,5 +3,5 @@
 # Practice with the tee command
 
 gp=grep_practice.txt
-
-grep '^Oct.' $gp | tee gp_results.txt
+ 
+cat $gp | grep -i '^oct' | tee gp_results.txt
