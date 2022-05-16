@@ -10,3 +10,5 @@ export GREP_COLORS='ms=05;33;107:sl=01;31;44:cx=09;36'
 cpu='/proc/cpuinfo'
 
 grep -C2 proc $cpu
+
+grep -P '(?<=boeing).com' grep_practice.txt
