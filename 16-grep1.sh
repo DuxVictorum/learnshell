@@ -38,4 +38,8 @@ grep -w de $gp
 
 echo -e "\n#10) All lines with a last name ending in -son except Don Henderson (output is cyan)"
 export GREP_COLORS='ms=01;33:mc=01;31:sl=01;36:cx=:fn=35:ln=32:bn=32:se=36'
-grep '.*son' grep_practice.txt | grep -v @ | grep -v Don
+grep '.*son' $gp | grep -v @ | grep -v Don
+
+echo -e "\n#11) Same as above except entirely with grep"
+export GREP_COLORS='ms=04;33:mc=01;31:sl=95:cx=:fn=35:ln=32:bn=32:se=36'
+grep -P '(?<!Don Hender)son(?!.*@)' $gp
