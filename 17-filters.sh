@@ -12,4 +12,5 @@ grep '8' gp_results.txt
 cat /etc/passwd | cut -d: -f1,6 | tail -6
 
 # Using the 'tr' command
-cat /etc/passwd | cut -c5-15 | tail -6 | tr '[:digit:],:' 'X, '
+cat /etc/passwd | cut -c5-15 | tail -6 | tr ':n-p' ' X'
+cat /etc/passwd | cut -d: -f1,3 | tail -6 | tr -d 'n0'
