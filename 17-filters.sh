@@ -15,3 +15,7 @@ cat /etc/passwd | cut -d: -f1,6 | tail -6
 cat /etc/passwd | cut -c5-15 | tail -6 | tr ':n-p' ' X'
 cat /etc/passwd | cut -d: -f1,3 | tail -6 | tr -d 'n0'
 cat /etc/passwd | tail -3 | cut -d: -f1,3 | tr '\n' '\t'; echo
+
+# Using the 'sort' command
+echo
+cat /etc/passwd | head | sort -n -t: -k3
