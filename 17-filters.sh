@@ -18,4 +18,11 @@ cat /etc/passwd | tail -3 | cut -d: -f1,3 | tr '\n' '\t'; echo
 
 # Using the 'sort' command
 echo
+# Numerical sort of users by id #
 cat /etc/passwd | head | sort -n -t: -k3
+echo 
+# Alphabetical sort by userid
+cat /etc/passwd | head -4 | sort -k1
+echo
+# Reverse numerical sort of users by id#
+cat /etc/passwd | tail -5 | sort -r -n -t: -k3
