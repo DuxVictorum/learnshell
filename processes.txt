@@ -1,0 +1,9 @@
+UID        PID  PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+root         1     0  0   231   540   2 May27 ?        00:00:00 /init
+root        97     1  0   224    80   0 May27 ?        00:00:00 /init
+root        98    97  0   224    80   3 May27 ?        00:00:00 /init
+mthorne     99    98  0  2572  5404   2 May27 pts/1    00:00:00 -bash
+root       325     1  0   318   388   0 May27 ?        00:00:00 /init
+root       326   325  0   318   388   1 May27 ?        00:00:00 /init
+mthorne    327   326  0  2542  5440   3 May27 pts/0    00:00:00 -bash
+mthorne    359   327  0  2654  3296   1 00:02 pts/0    00:00:00 ps -eF

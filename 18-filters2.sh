@@ -13,9 +13,9 @@ comm -12 <(sort comm_practice1.txt) <(sort comm_practice2.txt)
 
 # 3) Fun with od 
 echo -e "\nThe 'od' command will convert ascii text into octal (or other) format."
-echo -e "\nHere you can see the output of gp_results.txt with both the octal code and original characters."
+echo -e "\nHere you can see the output of gp_results.txt with both the octal bytes and printable characters."
 od -bc gp_results.txt
 
 # 4) Fun with awk
 echo -e "\nFirst here are just the process IDs from running 'ps -eF'"
-ps -eF | awk '{print $2}'
+ps -eF | awk 'NR>1 {printf "%-8s %s\n", $2, $11}'
