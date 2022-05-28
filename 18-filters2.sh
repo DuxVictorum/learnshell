@@ -11,6 +11,11 @@ comm <(sort comm_practice1.txt) <(sort comm_practice2.txt)   # process substitut
 echo -e "\nThe phone numbers common to both sets are as follows:"
 comm -12 <(sort comm_practice1.txt) <(sort comm_practice2.txt)
 
-# 3) Fun with od - 
+# 3) Fun with od 
 echo -e "\nThe 'od' command will convert ascii text into octal (or other) format."
+echo -e "\nHere you can see the output of gp_results.txt with both the octal code and original characters."
 od -bc gp_results.txt
+
+# 4) Fun with awk
+echo -e "\nFirst here are just the process IDs from running 'ps -eF'"
+ps -eF | awk '{print $2}'
