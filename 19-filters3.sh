@@ -6,5 +6,5 @@ echo -e "The first use of 'sed' will print every third line, starting with line 
 sed -n 1~3p grep_practice.txt
 
 # 2) Basic text string replacement
-echo -e "\n\nThe 'sed' command has basic text replacement capabilities."
-sed 's/"High School"/"Dolphin Puddle"' grep_practice.txt
+echo -e "\n\nThe 'sed' command has basic text replacement capabilities. Here 'High School' becomes:"
+grep 'High School' grep_practice.txt | sed 's/High School/Dolphin Puddle/'
