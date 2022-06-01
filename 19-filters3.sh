@@ -15,3 +15,7 @@ echo -e "\nFirst here are the email addresses in the file."
 grep 'example.com' grep_practice.txt
 echo -e "\n But now the emails are gone!"
 grep 'example.com' grep_practice.txt | sed /example.com/d
+
+# 4) Using sed to print only the first five lines of the LICENSE file
+echo -e "\nSed can print a specific number of lines of a stream, e.g. the first five lines."
+sed -n '1,5p' LICENSE
