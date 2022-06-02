@@ -19,3 +19,7 @@ grep 'example.com' grep_practice.txt | sed /example.com/d
 # 4) Using sed to print only the first five lines of the LICENSE file
 echo -e "\nSed can print a specific number of lines of a stream, e.g. the first five lines."
 sed -n '1,5p' LICENSE
+
+# 5) Using sed to transform web URLs
+echo -e "\nAnother use is to do group transform of web URLs. Here 'luther.edu/mathorn2' becomes 'boeing.com/markthorne9'"
+echo "https://www.luther.edu/mathorn2" | sed 's_luther.edu/mathorn2_boeing.com/markthorne9_'
