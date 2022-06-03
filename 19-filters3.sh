@@ -26,4 +26,5 @@ echo "https://www.luther.edu/mathorn2" | sed 's_luther.edu/mathorn2_boeing.com/m
 
 #6) Using sed to store replaced data
 echo -e "\nAnd now we will use sed to store/archive the data to be replaced."
-
+echo "Richard Garfield is the manager." | sed 's/Richard Garfield/Steve Rogers/' >> manager_archive.txt
+cat manager_archive.txt
