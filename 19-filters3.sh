@@ -23,3 +23,7 @@ sed -n '1,5p' LICENSE
 # 5) Using sed to transform web URLs
 echo -e "\nAnother use is to do group transform of web URLs. Here 'luther.edu/mathorn2' becomes 'boeing.com/markthorne9'"
 echo "https://www.luther.edu/mathorn2" | sed 's_luther.edu/mathorn2_boeing.com/markthorne9_'
+
+#6) Using sed to store replaced data
+echo -e "\nAnd now we will use sed to store/archive the data to be replaced."
+
