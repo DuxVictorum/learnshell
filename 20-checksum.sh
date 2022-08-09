@@ -18,3 +18,6 @@ if [ $ADDLINE -eq 1 ]; then
 else 
   echo -e "No new text this time. Your checksum is still $(cksum $FILE1 | awk '{print $1}')."
 fi
+
+# Use the 'shuf' command to generate a number between 1 and 20.
+echo -e "\nBy the way, you just rolled a $(shuf -i 1-20 -n1) on your D20. Have a great day!"

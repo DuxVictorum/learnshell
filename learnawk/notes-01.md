@@ -29,10 +29,10 @@ You can define variables inside the action section.
 It usually makes sense to define them in a `BEGIN` line:
 > `BEGIN { x=5 }`
 
-From this point on, `x` equals 5 (not `$x` as in bash).  
-'Thus in the following code example: `{ print x, $x }`, the first 'x' prints out '5', whereas the second prints out field #5 of the record being acted upon.    
+From this point on, `x` (rather than `$x` as in bash) equals 5.  
+Thus in the following code example: `{ print x, $x }` the first 'x' prints out '5', whereas the second prints out field #5 of the record being acted upon.    
 
-*Note*: In awk, there is no variable expansion inside quotes. For example, `print $1` prints the first field, but `print "$1"` will print out "$1."  
+*Note*: In awk, there is no variable expansion inside quotes. For example, `print $1` prints the first field, but `print "$1"` will just print out "$1."  
 
 
 ---
