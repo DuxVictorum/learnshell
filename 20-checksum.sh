@@ -2,12 +2,19 @@
 
 # Practice using checksum tools: cksum
 
+# Text file to practice on
 FILE1="./LICENSE"
+# Generate the starting checksum for the file
+STARTING_CHECKSUM=$(cksum $FILE1 | awk '{print $1}')
+# Generate randomly a 0 [no additional line] or 1 [yes additional line].
+ADDLINE=$(($RANDOM%2))
 
-echo -e "Here is the checksum of the file $FILE1. \n--> $(cksum $FILE1)"
-echo "Adding additional text..."
-sleep 2
-echo -e "\nHere's another line to the file. What will the new checksum be?" >> $FILE1
-echo -e "And now here is the new checksum: \n--> $(cksum $FILE1)"
-
-# Add comparison test to check whether the checksum is different or not. :-)
+echo -e "Here is the current checksum of the file $FILE1. \n  --> $STARTING_CHECKSUM."
+if [ $ADDLINE -eq 1 ]; then
+  echo "Now adding some additional text..."
+  sleep 1
+  echo -n "Here's another line to the file." | tee -a $FILE1
+  echo -e "\tThe new checksum is $(cksum $FILE1 | awk '{print $1}')." | tee -a $FILE1
+else 
+  echo -e "No new text this time. Your checksum is still $(cksum $FILE1 | awk '{print $1}')."
+fi
