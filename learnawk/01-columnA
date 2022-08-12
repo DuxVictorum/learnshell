@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Var gets value of first command line argument; $1 needs quotes around it or else it won't work
+column="$1"
+
+# Try #1: This first script doesn't work, as the $column variable can't be read properly by awk. 
+awk '{print $column}'
