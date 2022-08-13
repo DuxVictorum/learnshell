@@ -4,4 +4,5 @@
 column="$1"
 
 # Try #1: This first script doesn't work, as the $column variable can't be read properly by awk. 
+# Usage: ls -lh | ./01-columnA 3
 awk '{print $column}'
