@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# Var gets value of first command line argument; $1 needs quotes around it or else it won't work
+# Var gets value of first command line argument; the variable value here needs quotes around it or else it won't work
 # Syntax below sets default value for the variable if unassigned (i.e. no passed argument)
 column="${1:-1}"
 
 # Try #2: This second script does work, as the extra $ and quotes allow awk to see it. 
-# Usage: ls -lh | ./01-columnB 3
-# Note: NR > 1 means don't print the first record. :-)
-awk 'NR > 1 {print $'$column'}'
+# Note: NR > 1 means print only the line #s greater than 1 (i.e. don't print the first line).
+ls -lh | awk 'NR > 1 {print $'$column'}'

@@ -46,6 +46,12 @@ Thus in the following code example: `{ print x, $x }` the first 'x' prints out '
 1. **Make your awk script its own stand-alone executable**  
 The awk program functions as an interpreter. This means that you can write an awk script, change its mode, and put it in the PATH *as long as* you add the following at top:  
 `#!/bin/awk -f`
+1. **Provide a default value to a bash variable**  
+Bash provides a way to assign a default value to a variable if nothing else gets assigned. In the context of awk, this is mainly useful for command-line arguments. If the user doesn't pass in a command-line argument, the default value can still get passed and not mess up an awk command / script.  
+The basic pattern is:  
+`${var:-defaultValue}`  
+For example (to print either the column designated by `arg $1`  or the third column if no arg is passed):  
+`columnToPrint="${1:-3}"`
 1. 
 
 # Notes to organize later:
