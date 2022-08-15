@@ -15,10 +15,18 @@ You can use `$0` to signify the entire record / line.
 
 ---
 
-# Patterns
-Two important patterns are BEGIN and END.
+# Patterns & Expressions
+To begin with, two important patterns are BEGIN and END.
 - BEGIN signals the action to be taken before any lines are read.
 - END signals the action to be taken after the last line is read.
+> BEGIN `{ print "File\tOwner" }`
+
+## Numeric Expressions
+The usual arithmetic expressions apply: +, -, *, /, %  
+A few notes:
+- The modulo operator (%) it finds the remainder after an *integer* divide. E.g. '7%3' = 1.  
+- A **blank space** between two variables concatenates them together.
+- AWK doesn't have data 'types'. Everything is a string or a number, and awk can easily convert from one to the other.
 
 ---
 
