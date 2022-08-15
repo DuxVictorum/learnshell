@@ -6,6 +6,7 @@ The most basic structure of an 'awk' command is:
 
 The awk language looks at every line in the file/input and processes it according to the pattern.  
 **If the pattern matches the input, then the action is performed.**  
+It is common, however, for an awk command to leave either the pattern or action side empty. In that case, awk applies the **default**:
 - If the pattern portion is left empty, the default pattern is to match the entire record.
 - If the action portion is left empty (i.e. no square brackets at all), the default action is to print the entire record.  
 
@@ -21,12 +22,38 @@ To begin with, two important patterns are BEGIN and END.
 - END signals the action to be taken after the last line is read.
 > BEGIN `{ print "File\tOwner" }`
 
+## Variables
+You can define variables inside the action section.  
+*Important*: **Unlike bash, you reference a variable only with the variable name**, not with a prefixed $ symbol. Thus, if you declare `num=3`, then from that point on, typing `num` (and not `$num`) means `3`.  
+It usually makes sense to define them in a `BEGIN` line:
+> `BEGIN { x=5 }`
+
+Thus in the following code example: `{ print x, $x }` the first 'x' prints out '5', whereas the second prints out the fifth field of the record being acted upon.    
+
+*Note*: In awk, there is no variable expansion inside quotes. For example, `print $1` prints the first field, but `print "$1"` will just print out "$1."  
+
+
+
 ## Numeric Expressions
-The usual arithmetic expressions apply: +, -, *, /, %  
+The usual arithmetic expressions apply: +, -, *, /, %.  
+Also, the increments ++ and -- work as usual (both var++ and ++var) as well as the assignment operators `x+=` or `x-=`, etc.  
 A few notes:
 - The modulo operator (%) it finds the remainder after an *integer* divide. E.g. '7%3' = 1.  
-- A **blank space** between two variables concatenates them together.
+- Usual order of operations applies (PEMDAS).
+- A **blank space** between two variables or values concatenates them together. Thus `x=1+2*3 4` assigns the value of `74` and not `7 4`.
 - AWK doesn't have data 'types'. Everything is a string or a number, and awk can easily convert from one to the other.
+- The unary operators + and - on a value will render them positive or negative. Thus, if `var=10`, then `-var + 3` will yield `-7`.
+
+## Conditions
+Awk uses all the usual conditional operators (==, !=, >=, etc.).  You can also use `&&` (AND) and `||` (OR).  
+> **[Basic Example - TODO]**
+
+When comparing strings to regular expressions, you can use `~` (matches) or `!~` (doesn't match). The regex must be enclosed by slashes and come *after* the operator. Extended regex is acceptable.  
+> `awk 'uniform_number !~ /05/ {print $3}'`
+
+dsf
+
+
 
 ---
 
@@ -36,16 +63,6 @@ A few notes:
 The most basic (indeed, the default) action is to print the record or (more commonly) a specific field. 
 In this example, the **third column** of each record (row) will be printed.
 > `awk '{ print $3 }'`  
-
-## Variables
-You can define variables inside the action section.  
-It usually makes sense to define them in a `BEGIN` line:
-> `BEGIN { x=5 }`
-
-From this point on, `x` (rather than `$x` as in bash) equals 5.  
-Thus in the following code example: `{ print x, $x }` the first 'x' prints out '5', whereas the second prints out the fifth field of the record being acted upon.    
-
-*Note*: In awk, there is no variable expansion inside quotes. For example, `print $1` prints the first field, but `print "$1"` will just print out "$1."  
 
 
 ---
