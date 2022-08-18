@@ -13,6 +13,20 @@ It is common, however, for an awk command to leave either the pattern or action 
 Each field of a record can be referenced with `$1`, `$2`, `$3`, etc.  
 You can use `$0` to signify the entire record / line.
 
+## Summary of Commands in AWK
+Awk does not have very many commands. That makes it easier for you! Here is a complete list (usable in either the 'pattern' or 'action' side):  
+- if (conditional)
+- while (conditional)
+- for (expression / conditional / expression)
+- for (var in array)
+- break
+- continue
+- var=expression
+- print
+- printf
+- next
+- exit
+
 
 ---
 
