@@ -58,6 +58,16 @@ A few notes:
 - AWK doesn't have data 'types'. Everything is a string or a number, and awk can easily convert from one to the other.
 - The unary operators + and - on a value will render them positive or negative. Thus, if `var=10`, then `-var + 3` will yield `-7`.
 
+One useful and interesting way to use awk for math calculations is to put C-style calculation blocks into a BEGIN block. E.g.
+```
+BEGIN {
+  for (i=1; i <= 10; i++) {
+    printf "The square of ", i, " is ", i*i;
+  }
+  exit;
+}
+```
+
 ## Conditions
 Awk uses all the usual conditional operators (==, !=, >=, etc.).  You can also use `&&` (AND) and `||` (OR).  
 > **[Basic Example - TODO]**
