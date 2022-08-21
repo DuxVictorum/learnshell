@@ -1,3 +1,6 @@
+DevOps quote from John Willis, keynote talk at 2017 ServerlessConf
+> "DevOps is about humans. DevOps is a set of practices and patterns that turn human capital into high performance organizational capital."
+
 # Basic Structure of AWK
 The awk program treats every line of text in a file as a separate record. It then splits that record / line into discrete fields (based on whitespace).
 
@@ -15,9 +18,9 @@ You can use `$0` to signify the entire record / line.
 
 ## Summary of Commands in AWK
 Awk does not have very many commands. That makes it easier for you to learn them! Here is a complete list (usable in either the 'pattern' or 'action' side):  
-- if (conditional)
+- if / else if / else (conditional)
 - while (conditional)
-- for (expression / conditional / expression)
+- for (expression / conditional / increment)
 - for (var in array)
 - break
 - continue
@@ -58,7 +61,11 @@ You can use `$0` to reference all fields of the record (= `$1` `$2` `$3`, etc.).
 You can overwrite a positional variable by explicitly assigning it a new value (`$2=25`) or deleting its value (`$4=""`).
 
 ### **FS - Field Separator**
+The default way that awk identifies fields is by looking for blank space. You can change this however by defining the built-in FS variable. For example, the `/etc/passwd` file separates records with a colon, and you could tell awk to do the same by defining the FS variable.
+> `BEGIN { FS=":"; }`
 
+You can also set a new field separator at the CLI by using the -F option and following that immediately with the character to be the new separator, e.g. `awk -F:`.
+ (Note that this -F option can only take a single character, whereas the FS variable can take multiple characters, making it more versatile.)
 
 &&&&
 
@@ -118,7 +125,9 @@ The basic pattern is:
 `${var:-defaultValue}`  
 For example (to print either the column designated by `arg $1`  or the third column if no arg is passed):  
 `columnToPrint="${1:-3}"`
-1. 
+1. **Re-evaluating the record after variable change**  
+If you change the value of a variable in the middle of things, then you need to re-evaluate the whole record / line again so that awk can continue with the new variable in place. You do this by simply typing:  
+`$0=$0`
 
 # Notes to organize later:
 This is 
