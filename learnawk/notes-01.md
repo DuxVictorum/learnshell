@@ -30,6 +30,7 @@ Awk does not have very many commands. That makes it easier for you to learn them
 - next
 - exit
 
+In either the pattern or action side, you can have multiple statements. You just separate them with a semicolon (`;`).
 
 ---
 
@@ -66,6 +67,21 @@ The default way that awk identifies fields is by looking for blank space. You ca
 
 You can also set a new field separator at the CLI by using the -F option and following that immediately with the character to be the new separator, e.g. `awk -F:`.
  (Note that this -F option can only take a single character, whereas the FS variable can take multiple characters, making it more versatile.)
+
+### **OFS - Output Field Separator**
+When printing, the default way that awk outputs multiple fields is to separate them with a single blank space. You can change this by defining the OFS variable.
+> `BEGIN { OFS=" - "; } { print $2, $4 }` 
+
+### **NF - Number of Fields**
+This variable is set to the number of fields awk finds when it reads the line.  
+It's useful, for example, in handling input with varying field lengths:
+> `if (NF < 5) { print $2, $4 } else { print $2, $4, $6 }`
+
+### **NR - Number of Record**
+This variable is set to the record number awk is reading at that moment. In other words, `NR` is equal to the line number of the input or file.  
+For example, you can use this to tell awk to skip printing the first line and then to add the line number at the front of all lines it does print:
+> `NR > 1 { print NR, $0}`
+
 
 &&&&
 
