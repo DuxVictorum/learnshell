@@ -75,12 +75,12 @@ When printing, the default way that awk outputs multiple fields is to separate t
 ### **NF - Number of Fields**
 This variable is set to the number of fields awk finds when it reads the line.  
 It's useful, for example, in handling input with varying field lengths:
-> `if (NF < 5) { print $2, $4 } else { print $2, $4, $6 }`
+> `{if (NF < 5) { print $2, $4 } else { print $2, $4, $6 }}`
 
 ### **NR - Number of Record**
 This variable is set to the record number awk is reading at that moment. In other words, `NR` is equal to the line number of the input or file.  
-For example, you can use this to tell awk to skip printing the first line and then to add the line number at the front of all lines it does print:
-> `NR > 1 { print NR, $0}`
+For example, you can use this to tell awk to skip printing the first line and then to add a (newly calculated) line number at the front of all lines it does print:
+> `NR > 1 { print NR-1, $0 }`
 
 
 &&&&
