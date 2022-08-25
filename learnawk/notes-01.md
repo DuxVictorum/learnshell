@@ -82,6 +82,10 @@ This variable is set to the record number awk is reading at that moment. In othe
 For example, you can use this to tell awk to skip printing the first line and then to add a (newly calculated) line number at the front of all lines it does print:
 > `NR > 1 { print NR-1, $0 }`
 
+### **RS - Record Separator**
+By default awk reads records one line at a time. In other words, a newline separates records. You can change this by defining the `RS` variable. You could, for example, set it to a single space to make awk treat each word of text as if it were a separate line.  
+If you set `RS` to an empty string, awk will read the entire file as a single record (up to 99 lines anyway). If you then combine that with defining `FS` as the newline character (`\n`), then awk will every line as if it were a column. (Not that this kind of thing is useful, by the way.)  
+You won't often need to mess with `RS`.
 
 &&&&
 
