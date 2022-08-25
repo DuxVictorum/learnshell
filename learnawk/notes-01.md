@@ -84,8 +84,16 @@ For example, you can use this to tell awk to skip printing the first line and th
 
 ### **RS - Record Separator**
 By default awk reads records one line at a time. In other words, a newline separates records. You can change this by defining the `RS` variable. You could, for example, set it to a single space to make awk treat each word of text as if it were a separate line.  
-If you set `RS` to an empty string, awk will read the entire file as a single record (up to 99 lines anyway). If you then combine that with defining `FS` as the newline character (`\n`), then awk will every line as if it were a column. (Not that this kind of thing is useful, by the way.)  
+> `BEGIN { RS=" "; } { print $0 }`
+
+If you set `RS` to an empty string, awk will read the entire file as a single record (up to 99 lines anyway). If you then combine that with defining `FS` as the newline character (`\n`), then awk will read every line as if it were a column. (Not that this kind of thing is useful, by the way, but you could.)  
 You won't often need to mess with `RS`.
+
+### **ORS - Output Record Separator**
+When printing, the default way that awk outputs multiple records is to make each a separate line. (No surprise there.) Specifically, each record is separated with a newline.  
+One use case would be to change this to accommodate ouput for a non-UNIX system, e.g.:
+> ` awk 'BEGIN { ORS="\r\n"; } {print $0}' > windows_compatible.txt` 
+
 
 &&&&
 
