@@ -13,6 +13,17 @@ It is common, however, for an awk command to leave either the pattern or action 
 - If the pattern portion is left empty, the default pattern is to match the entire record.
 - If the action portion is left empty (i.e. no square brackets at all), the default action is to print the entire record.  
 
+## Awk Command Structure
+When using awk, place the entire pattern-action sequence inside single quotes. Place the action inside curly brackets.  
+When using awk as a stand-alone command, you need to designate a file or files for awk to act upon. Place that filename at the end outside of the single quotes.  
+> `awk '*pattern* { action }' file_name.txt`
+
+Awk can also read multiple files in order simply by listing them all in row:
+> `awk '*pattern* { action }' file_1.txt file_2.txt file_3.txt`
+
+Of course, awk can also act on the redirected output from another command. This is a very common use for awk.
+> `ps -ef | awk '{print "Process #" $2, "is owned by", $1 "."}'`
+
 Each field of a record can be referenced with `$1`, `$2`, `$3`, etc.  
 You can use `$0` to signify the entire record / line.
 
@@ -93,6 +104,12 @@ You won't often need to mess with `RS`.
 When printing, the default way that awk outputs multiple records is to make each a separate line. (No surprise there.) Specifically, each record is separated with a newline.  
 One use case would be to change this to accommodate ouput for a non-UNIX system, e.g.:
 > ` awk 'BEGIN { ORS="\r\n"; } {print $0}' > windows_compatible.txt` 
+
+### **FILENAME - Name of File**
+This built-in variable is set equal to the file being read at that moment.  
+*Note*: If no file is specified, then the value of this variable is simply `-`, i.e. "standard input". (In a BEGIN rule it stays unspecified in such a scenario.)  
+For example, let's say you need to process a file with at least six fields, and you want to print an error message if the user picks a wrong file with fewer fields:
+> `NF < 6 {print "Syntax Error in reading file:", FILENAME, "line #", NR}`
 
 
 &&&&
