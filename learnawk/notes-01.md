@@ -1,10 +1,15 @@
 DevOps quote from John Willis, keynote talk at 2017 ServerlessConf
 > "DevOps is about humans. DevOps is a set of practices and patterns that turn human capital into high performance organizational capital."
 
-# Basic Structure of AWK
+# Introduction to AWK
+According to it's own manual, awk is a "pattern scanning and processing language." Yes, it's actually a (fairly compact) language, one designed for scanning text line-by-line and performing actions on those lines that match the pattern it is searching for. That may not sound like much, but it is an impressive and useful tool in your Linux tool belt.  
+
+(*Note:* This guide is written for **gawk** or 'GNU awk', the version of awk found on all modern Linux systems. It contains all the functionality of the original plus some extra cool stuff.)
+
+## Basic Fundamentals
 The awk program treats every line of text in a file as a separate record. It then splits that record / line into discrete fields (based on whitespace).
 
-The most basic structure of an 'awk' command is:  
+**--> The most basic structure of an 'awk' command is:**  
 > ***pattern* { action }**
 
 The awk language looks at every line in the file/input and processes it according to the pattern.  
@@ -14,18 +19,23 @@ It is common, however, for an awk command to leave either the pattern or action 
 - If the action portion is left empty (i.e. no square brackets at all), the default action is to print the entire record.  
 
 ## Awk Command Structure
-When using awk, place the entire pattern-action sequence inside single quotes. Place the action inside curly brackets.  
-When using awk as a stand-alone command, you need to designate a file or files for awk to act upon. Place that filename at the end outside of the single quotes.  
-> `awk '*pattern* { action }' file_name.txt`
-
-Awk can also read multiple files in order simply by listing them all in row:
-> `awk '*pattern* { action }' file_1.txt file_2.txt file_3.txt`
-
-Of course, awk can also act on the redirected output from another command. This is a very common use for awk.
-> `ps -ef | awk '{print "Process #" $2, "is owned by", $1 "."}'`
+When using awk, it is best practice to:
+- Place the entire pattern-action sequence inside single quotes (`awk 'pattern { action }'`)
+- Place the action section inside curly brackets.  
+- If the pattern section contains more than just a simple match pattern (e.g. an 'if' conditional) then put that section in curly brackets too.
 
 Each field of a record can be referenced with `$1`, `$2`, `$3`, etc.  
 You can use `$0` to signify the entire record / line.
+
+The most common use of awk is as a filter to act on the redirected output from another command. For example, to print out the owner of each running process:
+> `ps -ef | awk '{print "Process #" $2, "is owned by", $1 "."}'`
+
+When using awk as a stand-alone command, you need to designate a file or files for awk to act upon. Place that filename at the end outside of the single quotes.  
+> `awk 'pattern { action }' file_name.txt`
+
+Awk can also read multiple files in order simply by listing them all in row:
+> `awk 'pattern { action }' file_1.txt file_2.txt file_3.txt`
+
 
 ## Summary of Commands in AWK
 Awk does not have very many commands. That makes it easier for you to learn them! Here is a complete list (usable in either the 'pattern' or 'action' side):  
@@ -110,6 +120,10 @@ This built-in variable is set equal to the file being read at that moment.
 *Note*: If no file is specified, then the value of this variable is simply `-`, i.e. "standard input". (In a BEGIN rule it stays unspecified in such a scenario.)  
 For example, let's say you need to process a file with at least six fields, and you want to print an error message if the user picks a wrong file with fewer fields:
 > `NF < 6 {print "Syntax Error in reading file:", FILENAME, "line #", NR}`
+
+### **Other Built-in Variables**
+GNU awk has several other variables for use:
+- **ARGC** - The number of command line arguments
 
 
 &&&&
