@@ -122,8 +122,11 @@ For example, let's say you need to process a file with at least six fields, and 
 > `NF < 6 {print "Syntax Error in reading file:", FILENAME, "line #", NR}`
 
 ### **Other Built-in Variables**
-GNU awk has several other variables for use:
+GNU awk has many other less-common variables for use:
 - **ARGC** - The number of command line arguments
+- **ARGV** - The array of all command line arguments (index starts at 0)
+- **ARGIND** - The index in aRGV of the current file being processed
+- **BINMODE** - On non-POSIX systems, specifies use of "binary" mode for (=1/r) input files, (=2/w) output files, or (=3/rw) all files
 
 
 &&&&
