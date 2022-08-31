@@ -127,6 +127,10 @@ GNU awk has many other less-common variables for use:
 - **ARGV** - The array of all command line arguments (index starts at 0)
 - **ARGIND** - The index in aRGV of the current file being processed
 - **BINMODE** - On non-POSIX systems, specifies use of "binary" mode for (=1/r) input files, (=2/w) output files, or (=3/rw) all files
+- **CONVFMT** - The format used for converting a number into a string ("%.6g" is default, or up to 6 significant decimal digits)
+- **ENVIRON** - Array containing the values of the current environment
+- **ERRNO** - String describing a system error if it occurs
+- **FIELDWIDTHS** - List of set field widths (separated by a single whitespace); if set, it overwrites the FS variable. You can optionally add in front a value (followed by a colon and then the fieldwidth value) specifying the number of characters to skip before that field starts. 
 
 
 &&&&
