@@ -125,12 +125,15 @@ For example, let's say you need to process a file with at least six fields, and 
 GNU awk has many other less-common variables for use:
 - **ARGC** - The number of command line arguments
 - **ARGV** - The array of all command line arguments (index starts at 0)
-- **ARGIND** - The index in aRGV of the current file being processed
+- **ARGIND** - The index in `ARGV` of the current file being processed
 - **BINMODE** - On non-POSIX systems, specifies use of "binary" mode for (=1/r) input files, (=2/w) output files, or (=3/rw) all files
 - **CONVFMT** - The format used for converting a number into a string ("%.6g" is default, or up to 6 significant decimal digits)
 - **ENVIRON** - Array containing the values of the current environment
 - **ERRNO** - String describing a system error if it occurs
 - **FIELDWIDTHS** - List of set field widths (separated by a single whitespace); if set, it overwrites the FS variable. You can optionally add in front a value (followed by a colon and then the fieldwidth value) specifying the number of characters to skip before that field starts. 
+- **FNR** - The current record / line number *in the file currently being read*. This is similar to the NR variable, but `FNR` will reset back to 1 every time it reads a new file, whereas `NR` does not.
+- **FPAT** - A regular expression that, if set, causes awk to ignore `FS` and instead use this variable to determine how the fields and their breaks are defined.
+- **FUNCTAB** - Array whose indices and values are the names of all user-defined or extension functions available in the program
 
 
 &&&&
