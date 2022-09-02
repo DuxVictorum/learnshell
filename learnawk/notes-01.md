@@ -134,6 +134,12 @@ GNU awk has many other less-common variables for use:
 - **FNR** - The current record / line number *in the file currently being read*. This is similar to the NR variable, but `FNR` will reset back to 1 every time it reads a new file, whereas `NR` does not.
 - **FPAT** - A regular expression that, if set, causes awk to ignore `FS` and instead use this variable to determine how the fields and their breaks are defined.
 - **FUNCTAB** - Array whose indices and values are the names of all user-defined or extension functions available in the program
+- **IGNORECASE** - Controls the case-sensitivity of all regular expression and string operations. If set to any non-zero value, case is ignored. The default is to have this set to zero.
+- **LINT** - Controls the `--lint` option from within awk. When set to a non-zero value, awk will print lint warnings. Default is zero (false).
+- **OFMT** - The output format for numbers ("%.6g" or up to 6 decimal digits is default)
+- **PREC** - The working precision of arbitrary precision floating-point numbers (default is 53)
+- **PROCINFO** - A long array full of information related to the currently-running awk program
+- 
 
 
 &&&&
