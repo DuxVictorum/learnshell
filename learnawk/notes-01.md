@@ -138,7 +138,7 @@ GNU awk has many other less-common variables for use:
 - **LINT** - Controls the `--lint` option from within awk. When set to a non-zero value, awk will print lint warnings. Default is zero (false).
 - **OFMT** - The output format for numbers ("%.6g" or up to 6 decimal digits is default)
 - **PREC** - The working precision of arbitrary precision floating-point numbers (default is 53)
-- **PROCINFO** - A long array full of information related to the currently-running awk program
+- **PROCINFO** - A *long* array full of information related to the currently-running awk program (e.g. `PROCINFO["pid"]` is set to the value of the `getpid` system call)
 - 
 
 
