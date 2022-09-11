@@ -122,7 +122,7 @@ For example, let's say you need to process a file with at least six fields, and 
 > `NF < 6 {print "Syntax Error in reading file:", FILENAME, "line #", NR}`
 
 ### **Other Built-in Variables**
-GNU awk has many other less-common variables for use:
+GNU awk has many other less-common variables for use, as listed below. Under normal circumstances, you will rarely if ever need to invoke these (but they're still fun to know!).
 - **ARGC** - The number of command line arguments
 - **ARGV** - The array of all command line arguments (index starts at 0)
 - **ARGIND** - The index in `ARGV` of the current file being processed
@@ -145,8 +145,12 @@ GNU awk has many other less-common variables for use:
   - "U" or "u": roundTowardPositive
   - "Z" or "z": roundTowardZero 
   - "A" or "a": round away from zero (not always available)
-- **RT** - 
-
+- **RT** - The record terminator; defaults to whatever matches the specified value of the `RS` (Record Separator) variable.
+- **RSTART** - The index of the first character matched by the `match()` function (indices start at 1; value is `0` if no match)
+- **RLENGTH** - The length of the string matched by the `match()` function (value is `-1` if no match)
+- **SUBSEP** - The string used to separate multiple subscripts in array elements (default is `"\034"`)
+- **SYMTAB** -  Array of all currently defined global variables and arrays in the program. This is potentially useful for indirect access to read or write the value of a variable.
+- **TEXTDOMAIN** - The text domain of the awk program itself (useful for finding localized translations for the program)
 
 
 &&&&
