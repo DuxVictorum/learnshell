@@ -67,11 +67,6 @@ There are two kinds of variables:
 - Built-in: e.g. `$2` (second column or field of record) or `NR` (number of record)
 - User-defined: `students=15`
 
-**Important**: In awk, the `$` symbol is a function trigger that creates a positional variable. This is not like bash, where you use `$` to reference a variable. Instead, with awk you only reference a variable with the variable name and not with a prefixed $ symbol.  
-Thus, if you declare `num=3`, then from that point on, typing `num` (and not `$num`) means `3`. Using `$num` would mean the 3rd column of a record.  
-
-*Further note*: In awk, there is no variable expansion inside quotes. For example, `print $1` prints the first field, but `print "$1"` will just print out the literal string `$1`.  
-
 When declaring user-defined variables, it usually makes sense to initialize them in a `BEGIN` line:
 > `BEGIN { x=5 }`
 
@@ -80,6 +75,12 @@ When declaring user-defined variables, it usually makes sense to initialize them
 ### **`$` - Positional** 
 By far the most common built-in variable you will see is the positional variable, e.g. `$1`, `$4`, etc. These reference the corresponding column or field of a given record.  
 You can use `$0` to reference all fields of the record (= `$1` `$2` `$3`, etc.).  
+
+***Note***: In awk, the `$` symbol is a function trigger that creates a positional variable. This is not like bash, where you use `$` to reference an already-defined variable. Instead, with awk you only reference a variable with the variable name and not with a prefixed `$` symbol.  
+Thus, for example, if you declare `num=3`, then from that point on `num` (and not `$num`) means `3`. Using `$num` would mean the 3rd column of a record.  And if you then run `{ print x, $x }` the first 'x' prints out '5', whereas the second prints out the fifth field of the record being acted upon.   
+
+***Further note***: In awk, there is no variable expansion inside quotes. For example, `print $1` prints the first field, but `print "$1"` will just print out the literal string `$1`. 
+
 You can overwrite a positional variable by explicitly assigning it a new value (`$2=25`) or deleting its value (`$4=""`).
 
 ### **FS - Field Separator**
@@ -151,11 +152,6 @@ GNU awk has many other less-common variables for use, as listed below. Under nor
 - **SUBSEP** - The string used to separate multiple subscripts in array elements (default is `"\034"`)
 - **SYMTAB** -  Array of all currently defined global variables and arrays in the program. This is potentially useful for indirect access to read or write the value of a variable.
 - **TEXTDOMAIN** - The text domain of the awk program itself (useful for finding localized translations for the program)
-
-
-&&&&
-
-To summarize, if you then set the action `{ print x, $x }` the first 'x' prints out '5', whereas the second prints out the fifth field of the record being acted upon.    
 
 
 ## Numeric Expressions
