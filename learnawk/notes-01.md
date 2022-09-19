@@ -154,6 +154,10 @@ GNU awk has many other less-common variables for use, as listed below. Under nor
 - **TEXTDOMAIN** - The text domain of the awk program itself (useful for finding localized translations for the program)
 
 
+## Arrays
+Arrays in awk are not like what you may be used to from other languages. Awk has something called "associative arrays." Instead of identifying an entry in an array by means of an index number, you can identify it by *any string you want to associate with it*. That's right -- instead of index numbers, awk uses strings. This is really useful and can simplify array operations tremendously.
+
+
 ## Numeric Expressions
 The usual arithmetic expressions apply: +, -, *, /, %.  
 Also, the increments ++ and -- work as usual (both var++ and ++var) as well as the assignment operators `x+=` or `x-=`, etc.  
