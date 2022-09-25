@@ -59,7 +59,7 @@ In either the pattern or action side, you can have multiple statements. You just
 To begin with, two important patterns are BEGIN and END.
 - BEGIN signals the action to be taken before any lines are read.
 - END signals the action to be taken after the last line is read.
-> BEGIN `{ print "File\tOwner" }`
+> `BEGIN { print "File\tOwner" }`
 
 ## Variables
 You can define variables inside the action section.  
