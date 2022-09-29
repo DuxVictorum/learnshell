@@ -155,7 +155,10 @@ GNU awk has many other less-common variables for use, as listed below. Under nor
 
 
 ## Arrays
-Arrays in awk are not like what you may be used to from other languages. Awk has something called "associative arrays." Instead of identifying an entry in an array by means of an index number, you can identify it by *any string you want to associate with it*. That's right -- instead of index numbers, awk uses strings. This is really useful and can simplify array operations tremendously.
+Arrays in awk are not like what you may be used to from other languages. Awk has something called "associative arrays."  
+Instead of identifying an entry in an array by means of an index number, you can identify it by *any string you want to associate with it*. That's right -- instead of numbers, **awk uses a string as the index of an array**. This is really useful and can simplify array operations tremendously.
+
+For example, 
 
 
 ## Numeric Expressions
