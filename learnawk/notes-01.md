@@ -158,7 +158,13 @@ GNU awk has many other less-common variables for use, as listed below. Under nor
 Arrays in awk are not like what you may be used to from other languages. Awk has something called "associative arrays."  
 Instead of identifying an entry in an array by means of an index number, you can identify it by *any string you want to associate with it*. That's right -- instead of numbers, **awk uses a string as the index of an array**. This is really useful and can simplify array operations tremendously. But it can take some getting used to.
 
-For example, let's say that you wanted to look at the files in a given directory and figure out how many were created in each month. When you run `ls -al`, the sixth column gives you the month.
+For example, let's say that you wanted to look at the files in a given directory and figure out how many were created in each month. When you run `ls -al`, the month column is the sixth one over. You can pipe that result into awk and process it in short order. In contrast to most other languages which would create an array called "months" with an index of 0-11 (`months[0]="Jan"`, etc.) and then iterate over that array every single line and look for a match and then increment some corresponding "files_in_month" variable, awk just does this: `month[$6]++`.  
+In other words, instead of `month[0]` awk lets you have `month["Jan"]`. And you don't even have to define it in advance. Pretty cool! 
+
+The entire awk script is compact and straightforward:
+```awk
+
+```
 
 
 ## Numeric Expressions
@@ -172,7 +178,7 @@ A few notes:
 - The unary operators + and - on a value will render them positive or negative. Thus, if `var=10`, then `-var + 3` will yield `-7`.
 
 One useful and interesting way to use awk for math calculations is to put C-style calculation blocks into a BEGIN block. E.g.
-```
+```awk
 BEGIN {
   for (i=1; i <= 10; i++) {
     printf "The square of ", i, " is ", i*i;
